@@ -1,24 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Whatsapp from './components/Whatsapp';
+import Home from './pages/Home';
+import About from './pages/About';
+import Programs from './pages/Programs';
+import Contact from './pages/Contact';
+import ProgramRegistration from './pages/ProgramRegistration';
+import GeneralRegistration from './pages/GeneralRegistration';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Welcome to Robo World</h1>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/programs' element={<Programs />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/register/:program' element={<ProgramRegistration />} />
+        <Route path='/get-started' element={<GeneralRegistration />} /> {/* Fixed route path */}
+      </Routes>
+      <Whatsapp />
+    </Router>
+  );
 }
 
-export default App
+export default App;
